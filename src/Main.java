@@ -1,5 +1,4 @@
 import game.Session;
-
 import java.util.Scanner;
 
 public class Main {
@@ -9,7 +8,13 @@ public class Main {
 
         while (playAgain) {
             System.out.println("How many players?");
-            int humanCount = Integer.parseInt(scanner.nextLine());
+            int humanCount = 0;
+            try {
+                humanCount = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid integer.");
+                continue;
+            }
 
             Session session = new Session(humanCount);
             session.startGame();
