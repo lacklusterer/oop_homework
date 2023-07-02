@@ -24,11 +24,6 @@ public class Session {
         initPlayers();
     }
 
-    private void startTurn() {
-        Turn turn = new Turn(players);
-        System.out.println("Start of turn " + 1);
-    }
-
     private void initPlayers() {
         // Add players
         for (int i = 0; i < humanCount; i++) {
@@ -57,6 +52,11 @@ public class Session {
         while (!gameOver) {
             startTurn();
         }
+    }
+
+    private void startTurn() {
+        Turn turn = new Turn(players);
+        System.out.println("Start of turn " + 1);
     }
 
     public void endGame(Player winner) {
