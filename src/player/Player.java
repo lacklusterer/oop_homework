@@ -39,7 +39,6 @@ public abstract class Player {
         int result = dice.roll();
         score += result;
         System.out.println(name + " rolled a " + result);
-        System.out.println(name + "'s current score is " + score);
     }
 
     public abstract void makeMove();

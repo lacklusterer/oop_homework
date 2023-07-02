@@ -20,4 +20,12 @@ public class Turn {
             System.out.println(player.getName() + ": " + player.getScore());
         }
     }
+
+    private void playersRollDice() {
+        for (Player player : players) {
+            System.out.println(player.getName() + "'s turn!");
+            player.makeMove();
+            System.out.println(player.getName() + "'s current score is " + player.getScore());
+        }
+    }
 }
