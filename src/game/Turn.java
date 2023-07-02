@@ -21,7 +21,7 @@ public class Turn {
         }
     }
 
-    private void playersRollDice() {
+    public void playersPlayTurn() {
         for (Player player : players) {
             System.out.println(player.getName() + "'s turn!");
             player.makeMove();

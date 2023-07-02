@@ -13,27 +13,20 @@ public abstract class Player {
     {
         playerNumber++;
         id = playerNumber;
-    }
+    } // Id instance initializer
 
     public Player(String name) {
         this.score = 0;
+        System.out.println("Player " + name + "joined!");
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() {return name;}
 
-    public int getScore() {
-        return score;
-    }
+    public int getScore() {return score;}
 
-    public int getId() {
-        return id;
-    }
+    public int getId() {return id;}
 
-    public void giveDice(Dice dice) {
-        this.dice = dice;
-    }
+    public void giveDice(Dice dice) {this.dice = dice;}
 
     public void rollDice() {
         int result = dice.roll();

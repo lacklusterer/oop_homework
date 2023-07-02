@@ -21,7 +21,6 @@ public class Session {
         this.botCount = 4 - humanCount;
         this.players = new ArrayList<>();
         this.gameOver = false;
-        initPlayers();
     }
 
     private void initPlayers() {
@@ -50,16 +49,44 @@ public class Session {
     public void startGame() {
         initPlayers();
         while (!gameOver) {
-            startTurn();
+            startTurn(this.players);
         }
     }
 
-    private void startTurn() {
+    private void startTurn(List<Player> players) {
         currentTurn++;
         Turn turn = new Turn(currentTurn, players);
+        turn.playersPlayTurn();
+        checkWinner();
     }
 
-    public void endGame(Player winner) {
+    private void checkWinner() {
+        Player winner = null;
+        ArrayList<Player> tieBreakPlayers = new ArrayList<>();
+
+        for (Player player : players) {
+            if (player.getScore() >= 21) {
+                if (winner == null) {
+                    winner = player;
+                } else if (player.getScore() > winner.getScore()) {
+                    winner = player;
+                } else if (player.getScore() == winner.getScore()) {
+                    tieBreakPlayers.add(winner);
+                    tieBreakPlayers.add(player);
+                }
+            }
+        }
+
+        if (tieBreakPlayers.size() > 0) {
+            startTurn(tieBreakPlayers);
+            checkWinner();
+        } else if (winner != null) {
+            endGame(winner);
+        }
+    }
+
+
+    private void endGame(Player winner) {
         gameOver = true;
         System.out.println("Winner: " + winner.getName());
     }
