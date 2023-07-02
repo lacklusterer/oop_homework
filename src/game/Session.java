@@ -88,10 +88,14 @@ public class Session {
         gameOver = true;
         System.out.println("Winner: " + winner.getName());
 
-        // Losers taunt
-        for (Player bot : players) {
-            if (bot instanceof Bot) {
-                ((Bot) bot).taunt();
+        // Bot taunts
+        if (winner instanceof Bot) {
+            ((Bot) winner).victoryTaunt();
+        } else {
+            for (Player bot : players) {
+                if (bot instanceof Bot) {
+                    ((Bot) bot).loseTaunt();
+                }
             }
         }
     }

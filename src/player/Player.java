@@ -6,7 +6,7 @@ public abstract class Player {
     private static int playerNumber = 0;
     private int id;
 
-    private String name;
+    protected String name;
     private int score;
     private Dice dice;
 
