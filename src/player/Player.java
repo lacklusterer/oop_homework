@@ -16,8 +16,9 @@ public abstract class Player {
     } // Id instance initializer
 
     public Player(String name) {
+        this.name = name;
         this.score = 0;
-        System.out.println("Player " + name + "joined!");
+        System.out.println("Player " + name + " joined!");
     }
 
     public String getName() {return name;}
