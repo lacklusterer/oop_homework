@@ -11,10 +11,10 @@ public class Turn {
     public Turn(int currentTurn, List<Player> players) {
         this.players = players;
         this.currentTurn = currentTurn;
-        printTurnInfo();
     }
 
     public void printTurnInfo() {
+        System.out.println("_____________________________________");
         System.out.print("Current turn: " + currentTurn + "\n" + "Scoreboard:" + "\n");
         for (Player player : players) {
             System.out.println(player.getName() + ": " + player.getScore());
@@ -27,5 +27,6 @@ public class Turn {
             player.makeMove();
             System.out.println(player.getName() + "'s current score is " + player.getScore());
         }
+        printTurnInfo();
     }
 }

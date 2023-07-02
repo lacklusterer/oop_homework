@@ -24,7 +24,7 @@ public class Human extends Player{
         if (response.equalsIgnoreCase("y")) {
             System.out.println("Please enter your comment:");
             String comment = scanner.nextLine();
-            System.out.println(name + ": " + comment);
+            System.out.println("\n" + name + ": " + comment);
         }
     }
 }

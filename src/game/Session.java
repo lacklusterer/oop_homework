@@ -54,6 +54,7 @@ public class Session {
     }
 
     private void startTurn(List<Player> players) {
+        System.out.println("_____________________________________");
         currentTurn++;
         Turn turn = new Turn(currentTurn, players);
         turn.playersPlayTurn();
@@ -78,6 +79,7 @@ public class Session {
         }
 
         if (tieBreakPlayers.size() > 0) {
+            System.out.println("Tie Breaker Round!");
             startTurn(tieBreakPlayers);
         } else if (winner != null) {
             endGame(winner);
@@ -86,6 +88,8 @@ public class Session {
 
     private void endGame(Player winner) {
         gameOver = true;
+
+        System.out.println("#####################################");
         System.out.println("Winner: " + winner.getName());
 
         // Human comment
@@ -97,11 +101,12 @@ public class Session {
         // Bot taunts
         if (winner instanceof Bot) {
             ((Bot) winner).victoryTaunt();
-        } else {
-            for (Player bot : players) {
-                if (bot instanceof Bot) {
-                    ((Bot) bot).loseTaunt();
-                }
+            players.remove(winner);
+        }
+
+        for (Player bot : players) {
+            if (bot instanceof Bot) {
+                ((Bot) bot).loseTaunt();
             }
         }
     }
