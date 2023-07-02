@@ -79,12 +79,10 @@ public class Session {
 
         if (tieBreakPlayers.size() > 0) {
             startTurn(tieBreakPlayers);
-            checkWinner();
         } else if (winner != null) {
             endGame(winner);
         }
     }
-
 
     private void endGame(Player winner) {
         gameOver = true;
