@@ -14,7 +14,7 @@ public class Session {
     private int botCount;
 
     private boolean gameOver;
-    private int turn = 0;
+    private int currentTurn = 0;
 
     public Session(int humanCount) {
         this.humanCount = humanCount;
@@ -55,8 +55,8 @@ public class Session {
     }
 
     private void startTurn() {
-        Turn turn = new Turn(players);
-        System.out.println("Start of turn " + 1);
+        currentTurn++;
+        Turn turn = new Turn(currentTurn, players);
     }
 
     public void endGame(Player winner) {
