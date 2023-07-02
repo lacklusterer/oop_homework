@@ -13,7 +13,6 @@ public class Turn {
 
     public void printScoreboard() {
         System.out.println("Scoreboard:");
-
         for (Player player : players) {
             System.out.println(player.getName() + ": " + player.getScore());
         }
