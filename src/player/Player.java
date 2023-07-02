@@ -2,20 +2,20 @@ package player;
 
 import game.Dice;
 
-public class Player {
+public abstract class Player {
     private static int playerNumber = 0;
     private int id;
 
     private String name;
     private int score;
-    private boolean bot;
+    private Dice dice;
 
     {
         playerNumber++;
         id = playerNumber;
     }
 
-    public Player() {
+    public Player(String name) {
         this.score = 0;
     }
 
@@ -27,7 +27,20 @@ public class Player {
         return score;
     }
 
-    public void rollDice(Dice dice) {
-        score += dice.roll();
+    public int getId() {
+        return id;
     }
+
+    public void giveDice(Dice dice) {
+        this.dice = dice;
+    }
+
+    public void rollDice() {
+        int result = dice.roll();
+        score += result;
+        System.out.println(name + " rolled a " + result);
+        System.out.println(name + "'s current score is " + score);
+    }
+
+    public abstract void makeMove();
 }
