@@ -48,4 +48,3 @@ public class probability_test {
         }
     }
 }
-
