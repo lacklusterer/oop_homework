@@ -1,17 +1,32 @@
 package test;
 
 import game.Dice;
-import java.util.Map;
-import java.util.HashMap;
+
+import java.util.*;
 
 public class probability_test {
     public static void main(String[] args) {
-        Dice dice1 = new Dice();
-        Dice dice2 = new Dice();
-        Dice dice3 = new Dice();
-        Dice dice4 = new Dice();
+        Scanner scanner = new Scanner(System.in);
 
-        System.out.println(dice2.getId());
+        List<Dice> listDice = new ArrayList<Dice>();
+        for (int i = 1; i <= 4; i++) {
+            listDice.add(new Dice());
+        }
+
+        int chosenDiceIndex = 0;
+
+        System.out.println("Test which dice?");
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (choice) {
+            case 1, 2, 3, 4 -> chosenDiceIndex = choice-1;
+            default -> System.out.println("Invalid choice");
+        }
+
+        Dice chosenDice = listDice.get(chosenDiceIndex);
+
+        System.out.println(chosenDice.getId());
 
         int n = 1000000; // Number of times to roll the dice
 
@@ -20,7 +35,7 @@ public class probability_test {
 
         // Roll the dice n times
         for (int i = 0; i < n; i++) {
-            int result = dice2.roll();
+            int result = chosenDice.roll();
             outcomes.put(result, outcomes.getOrDefault(result, 0) + 1);
         }
 
